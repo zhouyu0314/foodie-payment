@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zy.mapper.PayOrdersMapper">
+
+    <select id="getPayOrdersById" resultType="com.zy.pojo.PayOrders">
+        select
+                id as id,
+                merchant_order_id as merchantOrderId,
+                merchant_user_id as merchantUserId,
+                amount as amount,
+                pay_method as payMethod,
+                pay_status as payStatus,
+                come_from as comeFrom,
+                return_url as returnUrl,
+                is_delete as isDelete,
+                created_time as createdTime
+        from pay_orders
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="id != null">
+                and id=#{id}
+            </if>
+        </trim>
+    </select>
+
+    <select id="getPayOrdersListByMap" resultType="com.zy.pojo.PayOrders" parameterType="java.util.Map">
+        select
+                id as id,
+                merchant_order_id as merchantOrderId,
+                merchant_user_id as merchantUserId,
+                amount as amount,
+                pay_method as payMethod,
+                pay_status as payStatus,
+                come_from as comeFrom,
+                return_url as returnUrl,
+                is_delete as isDelete,
+                created_time as createdTime
+        from pay_orders
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="merchantOrderId != null and merchantOrderId!=''">
+                    and merchant_order_id=#{merchantOrderId}
+                </if>
+                <if test="merchantUserId != null and merchantUserId!=''">
+                    and merchant_user_id=#{merchantUserId}
+                </if>
+                <if test="amount != null and amount!=''">
+                    and amount=#{amount}
+                </if>
+                <if test="payMethod != null and payMethod!=''">
+                    and pay_method=#{payMethod}
+                </if>
+                <if test="payStatus != null and payStatus!=''">
+                    and pay_status=#{payStatus}
+                </if>
+                <if test="comeFrom != null and comeFrom!=''">
+                    and come_from=#{comeFrom}
+                </if>
+                <if test="returnUrl != null and returnUrl!=''">
+                    and return_url=#{returnUrl}
+                </if>
+                <if test="isDelete != null and isDelete!=''">
+                    and is_delete=#{isDelete}
+                </if>
+                <if test="createdTime != null and createdTime!=''">
+                    and created_time=#{createdTime}
+                </if>
+        </trim>
+        <if test="beginPos != null and pageSize != null ">
+            limit #{beginPos},#{pageSize}
+        </if>
+    </select>
+
+    <select id="getPayOrdersCountByMap" resultType="Integer"  parameterType="java.util.Map">
+        select count(*) from pay_orders
+        <trim prefix="where" prefixOverrides="and | or">
+                <if test="id != null and id!=''">
+                    and id=#{id}
+                </if>
+                <if test="merchantOrderId != null and merchantOrderId!=''">
+                    and merchant_order_id=#{merchantOrderId}
+                </if>
+                <if test="merchantUserId != null and merchantUserId!=''">
+                    and merchant_user_id=#{merchantUserId}
+                </if>
+                <if test="amount != null and amount!=''">
+                    and amount=#{amount}
+                </if>
+                <if test="payMethod != null and payMethod!=''">
+                    and pay_method=#{payMethod}
+                </if>
+                <if test="payStatus != null and payStatus!=''">
+                    and pay_status=#{payStatus}
+                </if>
+                <if test="comeFrom != null and comeFrom!=''">
+                    and come_from=#{comeFrom}
+                </if>
+                <if test="returnUrl != null and returnUrl!=''">
+                    and return_url=#{returnUrl}
+                </if>
+                <if test="isDelete != null and isDelete!=''">
+                    and is_delete=#{isDelete}
+                </if>
+                <if test="createdTime != null and createdTime!=''">
+                    and created_time=#{createdTime}
+                </if>
+        </trim>
+    </select>
+
+    <insert id="insertPayOrders" parameterType="com.zy.pojo.PayOrders">
+        insert into pay_orders(
+                               id,
+                        merchant_order_id,
+                        merchant_user_id,
+                        amount,
+                        pay_method,
+                        pay_status,
+                        come_from,
+                        return_url,
+                        is_delete,
+                        created_time)
+        values(
+                     #{id},
+                     #{merchantOrderId},
+                     #{merchantUserId},
+                     #{amount},
+                     #{payMethod},
+                     #{payStatus},
+                     #{comeFrom},
+                     #{returnUrl},
+                     #{isDelete},
+                    #{createdTime})
+    </insert>
+
+    <update id="updatePayOrders" parameterType="com.zy.pojo.PayOrders">
+        update pay_orders
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+                        <if test="merchantOrderId != null and merchantOrderId!=''">
+                            merchant_order_id=#{merchantOrderId},
+                        </if>
+                        <if test="merchantUserId != null and merchantUserId!=''">
+                            merchant_user_id=#{merchantUserId},
+                        </if>
+                        <if test="amount != null and amount!=''">
+                            amount=#{amount},
+                        </if>
+                        <if test="payMethod != null and payMethod!=''">
+                            pay_method=#{payMethod},
+                        </if>
+                        <if test="payStatus != null and payStatus!=''">
+                            pay_status=#{payStatus},
+                        </if>
+                        <if test="comeFrom != null and comeFrom!=''">
+                            come_from=#{comeFrom},
+                        </if>
+                        <if test="returnUrl != null and returnUrl!=''">
+                            return_url=#{returnUrl},
+                        </if>
+                        <if test="isDelete != null and isDelete!=''">
+                            is_delete=#{isDelete},
+                        </if>
+                        <if test="createdTime != null and createdTime!=''">
+                            created_time=#{createdTime}
+                        </if>
+        </trim>
+    </update>
+</mapper>
