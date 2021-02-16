@@ -55,7 +55,7 @@ public class WxOrderServiceImpl implements WxOrderService {
 		o.setNonce_str(nonce_str);
 		o.setTrade_type(wxPayResource.getTradeType());
 		o.setSpbill_create_ip(wxPayResource.getSpbillCreateIp());
-		SortedMap<Object, Object> p = new TreeMap<Object, Object>();
+		SortedMap<Object, Object> p = new TreeMap<>();
 		p.put("appid", wxPayResource.getAppId());
 		p.put("mch_id", wxPayResource.getMerchantId());
 		p.put("body", body);

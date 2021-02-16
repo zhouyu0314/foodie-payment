@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping(value = "payment")
+@RequestMapping(value = "/payment")
 public class PaymentController {
     private final static Logger log = LoggerFactory.getLogger(PaymentController.class);
 
@@ -98,7 +98,7 @@ public class PaymentController {
      * @param merchantUserId
      * @return
      */
-    @PostMapping("getPaymentCenterOrderInfo")
+    @PostMapping("/getPaymentCenterOrderInfo")
     public IMOOCJSONResult getPaymentCenterOrderInfo(String merchantOrderId, String merchantUserId) {
 
         if (StringUtils.isBlank(merchantOrderId) || StringUtils.isBlank(merchantUserId)) {
@@ -148,6 +148,7 @@ public class PaymentController {
 
                     // 统一下单
                     PreOrderResult preOrderResult = wxOrderService.placeOrder(body, out_trade_no, total_fee);
+                    //获取二维码地址
                     qrCodeUrl = preOrderResult.getCode_url();
                 }
 

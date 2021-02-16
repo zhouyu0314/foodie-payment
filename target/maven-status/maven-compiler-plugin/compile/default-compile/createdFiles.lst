@@ -2,7 +2,6 @@ com\zy\enums\OrderStatusEnum.class
 com\zy\idworker\Sid$1.class
 com\zy\utils\IMOOCJSONResult.class
 com\zy\utils\CurrencyUtils.class
-com\zy\wx\util\HttpUtil.class
 com\zy\enums\PayMethod.class
 com\zy\idworker\Id.class
 com\zy\controller\HelloController.class
@@ -13,17 +12,14 @@ com\zy\config\Swagger2.class
 com\zy\idworker\utils\Ip.class
 com\zy\utils\DesensitizationUtil.class
 com\zy\mapper\PayOrdersMapper.class
-com\zy\controller\NotifyController.class
 com\zy\enums\YesOrNo.class
 com\zy\pojo\bo\MerchantOrdersBO.class
 com\zy\enums\Sex.class
 com\zy\utils\RedisOperator.class
 com\zy\idworker\IdWorker.class
-com\zy\idworker\Code.class
 com\zy\idworker\utils\Utils.class
 com\zy\wx\service\WxOrderService.class
 com\zy\resource\AliPayResource.class
-com\zy\wx\service\impl\WxOrderServiceImpl.class
 com\zy\config\CorsConfig.class
 com\zy\idworker\strategy\DefaultRandomCodeStrategy.class
 com\zy\config\WebMvcConfig.class
